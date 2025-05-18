@@ -25,7 +25,9 @@ function App() {
   const handleprev = () => {
     setCurrentpage((prev) => Math.max(prev - 1, 1));
   };
-
+  const handlenext = () => {
+    setCurrentpage((prev) => Math.min(prev + 1, totalpages));
+  };
   return (
     <>
       <div>
@@ -52,7 +54,7 @@ function App() {
           {Array.from({ length: totalpages }, (_, index) => {
             return <button>{index + 1}</button>;
           })}
-          <button>Next</button>
+          <button onClick={handlenext}>Next</button>
         </div>
       </div>
     </>
