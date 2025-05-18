@@ -24,7 +24,30 @@ function App() {
 
   return (
     <>
-      <div>Pagination </div>
+      <div>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>NAME</th>
+              <th>EMAIL</th>
+              <th>GENDER</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentItems?.map((ele, i) => (
+              <tr key={i}>
+                <td>{ele.firstName}</td>
+                <td>{ele.email}</td>
+                <td>{ele.gender}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div>
+          <button>Prev</button>
+          <button>Next</button>
+        </div>
+      </div>
     </>
   );
 }
