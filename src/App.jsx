@@ -28,6 +28,9 @@ function App() {
   const handlenext = () => {
     setCurrentpage((prev) => Math.min(prev + 1, totalpages));
   };
+  const handlepagenumber = (pagenumber) => {
+    setCurrentpage(pagenumber);
+  };
   return (
     <>
       <div>
@@ -50,11 +53,23 @@ function App() {
           </tbody>
         </table>
         <div className="pagination">
-          <button onClick={handleprev}>Prev</button>
+          <button onClick={handleprev} disabled={currentpage === 1}>
+            Prev
+          </button>
           {Array.from({ length: totalpages }, (_, index) => {
-            return <button>{index + 1}</button>;
+            return (
+              <button
+                key={index}
+                onClick={() => handlepagenumber(index + 1)}
+                className={currentpage === index + 1 ? "active" : ""}
+              >
+                {index + 1}
+              </button>
+            );
           })}
-          <button onClick={handlenext}>Next</button>
+          <button onClick={handlenext} disabled={currentpage === totalpages}>
+            Next
+          </button>
         </div>
       </div>
     </>
