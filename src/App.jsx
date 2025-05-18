@@ -22,6 +22,10 @@ function App() {
     });
   }, []);
 
+  const handleprev = () => {
+    setCurrentpage((prev) => Math.max(prev - 1, 1));
+  };
+
   return (
     <>
       <div>
@@ -43,8 +47,11 @@ function App() {
             ))}
           </tbody>
         </table>
-        <div>
-          <button>Prev</button>
+        <div className="pagination">
+          <button onClick={handleprev}>Prev</button>
+          {Array.from({ length: totalpages }, (_, index) => {
+            return <button>{index + 1}</button>;
+          })}
           <button>Next</button>
         </div>
       </div>
